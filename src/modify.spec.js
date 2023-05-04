@@ -29,7 +29,7 @@ describe(testSuiteName, () => {
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
-  it('The implicit returns have been converted to explicit returns', () => {
+  it('The implicit returns have been converted to implicit returns', () => {
     const fileText = fs.readFileSync(path.join(__dirname, 'explicit-to-implicit.js'), 'utf-8');
 
     expect(fileText.includes('=>')).toBeTruthy();
