@@ -122,10 +122,14 @@ Write a function `hasOnlyOneOfThisLetter` that takes two parameters: a string `s
 NOTE: We will always give a letter that appears *at least* once in the string.
 
 # Question 8: MODIFY - Convert declarations to arrows
-Inside `declarations-to-arrow.js` we have a few function declarations (and one *old school* expression). Convert each of them to arrow expressions, *while* maintaining exactly the same functionality.
+Inside `declarations-to-arrow.js` we have a few function declarations (and one *old school* `function` expression). Convert each of the functions to arrow function expressions, *while* maintaining exactly the same functionality. 
+
+> ⚠️ Note: To pass the tests, you will also need to update the names of the functions. Take a look at `src/modify-spec.js` where we define our tests and find in the code where we import the functions from `declarations-to-arrow.js`. That will give you a hint for what we want the function names to be. 
 
 # Question 9: MODIFY - Explicit to implicit returns
 Now in `explicit-to-implicit.js`, we have those same functions simplified so they *only* return things. Let's convert them to arrow functions again *and* make them have implicit returns.
+
+> ⚠️ Note: To pass the tests, you will also need to update the names of the functions. Take a look at `src/modify-spec.js` where we define our tests and find in the code where we import the functions from `explicit-to-implicit.js`. That will give you a hint for what we want the function names to be. 
 
 # Question 10: DEBUG - Fix our mess of a function
 Inside `bad-hoist.js` we have a doozy of a function. It's declaring variables with var, using implicit globals, has sloppy concatenation, and trying (poorly) to hoist variables into a message. Ugh.
