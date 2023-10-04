@@ -39,7 +39,7 @@ describe(testSuiteName, () => {
     expect(textContent.includes('var')).toBeFalsy();
 
     expect(textContent.includes('time =')).toBeTruthy();
-    expect(textContent.includes('theirName =')).toBeTruthy();
+    expect(textContent.includes('name =')).toBeTruthy();
     expect(textContent.includes('mood =')).toBeTruthy();
     expect(textContent.indexOf('mood =') !== textContent.lastIndexOf('mood =')).toBeTruthy();
 
