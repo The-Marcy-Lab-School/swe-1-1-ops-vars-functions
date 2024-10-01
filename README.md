@@ -23,7 +23,7 @@ If you're ever confused about what a function should do, **check the test files!
 
 ### Get Set Up
 
-Refer to the ["Getting started" and "Finishing" sections of the first assignment](https://github.com/The-Marcy-Lab-School/tc-1-1-node?tab=readme-ov-file#getting-started) for a refresher on how to start and submit assignments.
+For guidance on setting up and submitting this assignment, refer to the Marcy lab School Docs How-To guide for [Working with Short Response and Coding Assignments](https://marcylabschool.gitbook.io/marcy-lab-school-docs/fullstack-curriculum/how-tos/working-with-assignments#what-is-a-swe-sr-assignment).
 
 ### nodemon
 It can get *pretty* tedious having to manually rerun our scripts all the time. It's why we recommend `test:w` when developing, those restarts on save are super nice.
