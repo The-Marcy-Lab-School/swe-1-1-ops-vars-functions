@@ -1,14 +1,14 @@
 /* eslint-disable no-undef */
 const path = require('path');
 const ScoreCounter = require('score-tests'); // eslint-disable-line import/no-extraneous-dependencies
-const { debugFunc } = require('./bad-hoist');
+const { debugFunc } = require('../src/bad-hoist');
 
 const testSuiteName = 'Debug Tests';
 const scoresDir = path.join(__dirname, '..', 'scores');
 const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 
 // mock console.log with jest mock function
-const log = jest.spyOn(console, 'log').mockImplementation(() => {});
+const log = jest.spyOn(console, 'log').mockImplementation(() => { });
 
 describe(testSuiteName, () => {
   afterEach(() => {

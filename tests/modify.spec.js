@@ -7,13 +7,13 @@ const {
   subtractArrow,
   multiplyArrow,
   powerArrow,
-} = require('./declarations-to-arrow');
+} = require('../src/declarations-to-arrow');
 const {
   addImplicit,
   subtractImplicit,
   multiplyImplicit,
   powerImplicit,
-} = require('./explicit-to-implicit');
+} = require('../src/explicit-to-implicit');
 
 const testSuiteName = 'Modify Tests';
 const scoresDir = path.join(__dirname, '..', 'scores');
@@ -21,7 +21,7 @@ const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 
 describe(testSuiteName, () => {
   it('The declarations have been converted to arrows', () => {
-    const fileText = fs.readFileSync(path.join(__dirname, 'declarations-to-arrow.js'), 'utf-8');
+    const fileText = fs.readFileSync(path.join(__dirname, '../src/declarations-to-arrow.js'), 'utf-8');
 
     expect(fileText.includes('=> {')).toBeTruthy();
     expect(fileText.includes('function')).toBeFalsy();
@@ -30,7 +30,7 @@ describe(testSuiteName, () => {
   });
 
   it('The implicit returns have been converted to implicit returns', () => {
-    const fileText = fs.readFileSync(path.join(__dirname, 'explicit-to-implicit.js'), 'utf-8');
+    const fileText = fs.readFileSync(path.join(__dirname, '../src/explicit-to-implicit.js'), 'utf-8');
 
     expect(fileText.includes('=>')).toBeTruthy();
     expect(fileText.includes('return')).toBeFalsy();
