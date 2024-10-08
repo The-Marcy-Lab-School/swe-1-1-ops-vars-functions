@@ -158,5 +158,4 @@ Fix the function so:
 - implicit globals are not used
 - `const` and `let` are used correctly
 - We use templates over concatenation
-- we still have 4 variable assignments: 3 initializations and 1 reassignment
-  - Basically, you can't just remove all the code and `console.log` those two strings.
+- In the end, you will have 4 variable assignments: 3 initializations and 1 reassignment
