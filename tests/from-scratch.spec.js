@@ -1,13 +1,14 @@
 const path = require('path');
 const ScoreCounter = require('score-tests'); // eslint-disable-line import/no-extraneous-dependencies
 const {
-  advancedGreet,
-  squishRepeat,
-  capitalizeSentence,
-  copyFromTheLastChar,
-  replaceEveryGivenLetterWithWord,
-  capitalizeIndex,
-  hasOnlyOneOfThisLetter,
+  calculateArea,
+  isEven,
+  convertToFahrenheit,
+  createGreeting,
+  getInitials,
+  formatPrice,
+  getLarger,
+  isValidAge,
 } = require('../src/from-scratch');
 
 const testSuiteName = 'From Scratch Tests';
@@ -15,86 +16,87 @@ const scoresDir = path.join(__dirname, '..', 'scores');
 const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 
 describe(testSuiteName, () => {
-  it('advancedGreet - greets any name and mood correctly', () => {
-    const randomName = Math.random().toString(36).substring(7);
-    const randomMood = Math.random().toString(36).substring(7);
-    expect(advancedGreet(randomName, randomMood))
-      .toBe(`Hello ${randomName}, are you feeling ${randomMood} today?`);
+  it('calculateArea - calculates rectangle area correctly', () => {
+    expect(calculateArea(5, 3)).toBe(15);
+    expect(calculateArea(10, 7)).toBe(70);
+    expect(calculateArea(2, 8)).toBe(16);
+    expect(calculateArea(0, 5)).toBe(0);
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
-  it('advancedGreet - uses string template', () => {
-    const textContent = advancedGreet.toString();
-
-    expect(textContent.includes('`')).toBeTruthy();
-    expect(textContent.includes('${')).toBeTruthy();
-    expect(textContent.match(/\+^\+/)).toBeFalsy();
-
-    expect(advancedGreet('tom', 'ok')).toBe(`Hello tom, are you feeling ok today?`);
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
-  });
-
-  it('squishRepeat - repeats a slice of a string a given number of times', () => {
-    expect(squishRepeat('hello', 1, 3)).toBe('hhh');
-    expect(squishRepeat('hello', 2, 3)).toBe('hehehe');
-    expect(squishRepeat('neato', 4, 2)).toBe('neatneat');
-    expect(squishRepeat('wow', 3, 4)).toBe('wowwowwowwow');
+  it('isEven - returns true for even numbers, false for odd', () => {
+    expect(isEven(2)).toBe(true);
+    expect(isEven(4)).toBe(true);
+    expect(isEven(6)).toBe(true);
+    expect(isEven(0)).toBe(true);
+    expect(isEven(1)).toBe(false);
+    expect(isEven(3)).toBe(false);
+    expect(isEven(5)).toBe(false);
+    expect(isEven(-2)).toBe(true);
+    expect(isEven(-1)).toBe(false);
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
-  it('capitalizeSentence - capitalizes the first letter of a sentence', () => {
-    expect(capitalizeSentence('hello')).toBe('Hello');
-    expect(capitalizeSentence('hello world')).toBe('Hello world');
-    expect(capitalizeSentence('hello world, how are you?')).toBe('Hello world, how are you?');
-    expect(capitalizeSentence('Hey alright then.')).toBe('Hey alright then.');
+  it('convertToFahrenheit - converts celsius to fahrenheit correctly', () => {
+    expect(convertToFahrenheit(0)).toBe(32);
+    expect(convertToFahrenheit(100)).toBe(212);
+    expect(convertToFahrenheit(37)).toBeCloseTo(98.6, 1);
+    expect(convertToFahrenheit(-40)).toBe(-40);
+    expect(convertToFahrenheit(25)).toBe(77);
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
-  it('copyFromTheLastChar - copies a string from the last index', () => {
-    expect(copyFromTheLastChar('hello', 'l')).toBe('lo');
-    expect(copyFromTheLastChar('wow', 'w')).toBe('w');
-    expect(copyFromTheLastChar('okay', 'a')).toBe('ay');
-    expect(copyFromTheLastChar('zzzzzzzz', 'z')).toBe('z');
+  it('createGreeting - creates proper greeting with name', () => {
+    expect(createGreeting('Alice')).toBe('Hello, Alice!');
+    expect(createGreeting('Bob')).toBe('Hello, Bob!');
+    expect(createGreeting('')).toBe('Hello, !');
+    expect(createGreeting('John Doe')).toBe('Hello, John Doe!');
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
-  it('replaceEveryGivenLetterWithWord - replaces every given letter with a word', () => {
-    expect(replaceEveryGivenLetterWithWord('hello', 'l', 'world')).toBe('heworldworldo');
-    expect(replaceEveryGivenLetterWithWord('hey there', 'e', 'all')).toBe('hally thallrall');
-    expect(replaceEveryGivenLetterWithWord('I know you', 'k', 'wow')).toBe('I wownow you');
-    expect(replaceEveryGivenLetterWithWord('zzzzzzzz', 'z', 'a')).toBe('aaaaaaaa');
-    expect(replaceEveryGivenLetterWithWord('zoo', 'x', 'albatross')).toBe('zoo');
+  it('getInitials - extracts initials from first and last name', () => {
+    expect(getInitials('John', 'Doe')).toBe('JD');
+    expect(getInitials('Mary', 'Jane')).toBe('MJ');
+    expect(getInitials('A', 'B')).toBe('AB');
+    expect(getInitials('Xavier', 'Yamamoto')).toBe('XY');
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
-  it('capitalizeIndex - capitalizes the letter at a given index', () => {
-    expect(capitalizeIndex('hello', 0)).toBe('Hello');
-    expect(capitalizeIndex('hello', 1)).toBe('hEllo');
-    expect(capitalizeIndex('hello', 2)).toBe('heLlo');
-    expect(capitalizeIndex('hello', 3)).toBe('helLo');
-    expect(capitalizeIndex('hello', 4)).toBe('hellO');
-    expect(capitalizeIndex('zzzz', 0)).toBe('Zzzz');
-    expect(capitalizeIndex('zzzz', 1)).toBe('zZzz');
-    expect(capitalizeIndex('zzzz', 2)).toBe('zzZz');
-    expect(capitalizeIndex('zzzz', 3)).toBe('zzzZ');
+  it('formatPrice - formats number as price string', () => {
+    expect(formatPrice(5)).toBe('$5.00');
+    expect(formatPrice(10)).toBe('$10.00');
+    expect(formatPrice(0)).toBe('$0.00');
+    expect(formatPrice(25)).toBe('$25.00');
+    expect(formatPrice(100)).toBe('$100.00');
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
-  it('hasOnlyOneOfThisLetter - returns true if there is only one of this letter', () => {
-    expect(hasOnlyOneOfThisLetter('hello', 'h')).toBeTruthy();
-    expect(hasOnlyOneOfThisLetter('hello', 'l')).toBeFalsy();
-    expect(hasOnlyOneOfThisLetter('hello', 'o')).toBeTruthy();
-    expect(hasOnlyOneOfThisLetter('wow', 'o')).toBeTruthy();
-    expect(hasOnlyOneOfThisLetter('wow', 'w')).toBeFalsy();
-    expect(hasOnlyOneOfThisLetter('okay', 'a')).toBeTruthy();
-    expect(hasOnlyOneOfThisLetter('alright then', 'a')).toBeTruthy();
+  it('getLarger - returns the larger of two numbers', () => {
+    expect(getLarger(5, 3)).toBe(5);
+    expect(getLarger(3, 5)).toBe(5);
+    expect(getLarger(10, 10)).toBe(10);
+    expect(getLarger(-5, -3)).toBe(-3);
+    expect(getLarger(0, 1)).toBe(1);
+    expect(getLarger(1, 0)).toBe(1);
+
+    scoreCounter.correct(expect); // DO NOT TOUCH
+  });
+
+  it('isValidAge - returns true for valid ages, false for invalid', () => {
+    expect(isValidAge(0)).toBe(true);
+    expect(isValidAge(18)).toBe(true);
+    expect(isValidAge(65)).toBe(true);
+    expect(isValidAge(120)).toBe(true);
+    expect(isValidAge(-1)).toBe(false);
+    expect(isValidAge(121)).toBe(false);
+    expect(isValidAge(150)).toBe(false);
+    expect(isValidAge(25)).toBe(true);
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });

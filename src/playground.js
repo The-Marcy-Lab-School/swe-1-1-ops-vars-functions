@@ -1,10 +1,13 @@
-// const {
-//   advancedGreet,
-//   squishRepeat,
-//   capitalizeSentence,
-//   copyFromTheLastIndexOfChar,
-//   replaceEveryGivenLetterWithWord,
-//   capitalizeIndex,
-//   hasOnlyOneOfThisLetter,
-// } = require('./from-scratch');
-// const { debugFunc } = require('./bad-hoist');
+const {
+  calculateArea,
+  isEven,
+  convertToFahrenheit,
+  createGreeting,
+  getInitials,
+  formatPrice,
+  getLarger,
+  isValidAge,
+} = require('./from-scratch');
+
+// Test your functions here!
+

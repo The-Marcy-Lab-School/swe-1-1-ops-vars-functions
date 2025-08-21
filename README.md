@@ -1,19 +1,20 @@
-# Lesson 1.0.1 - Variables, Functions, and Strings
+# Data Types, Operators, Variables, & Functions
 
 - [Before we start](#before-we-start)
   - [Get Set Up](#get-set-up)
   - [nodemon](#nodemon)
   - [playground.js](#playgroundjs)
-- [Question 1: Advanced Greet](#question-1-advanced-greet)
-- [Question 2: squishRepeat](#question-2-squishrepeat)
-- [Question 3: capitalizeSentence](#question-3-capitalizesentence)
-- [Question 4: copyFromTheLastChar](#question-4-copyfromthelastchar)
-- [Question 5: replaceEveryGivenLetterWithWord](#question-5-replaceeverygivenletterwithword)
-- [Question 6: capitalizeIndex](#question-6-capitalizeindex)
-- [Question 7: hasOnlyOneOfThisLetter](#question-7-hasonlyoneofthisletter)
-- [Question 8: MODIFY - Convert declarations to arrows](#question-8-modify---convert-declarations-to-arrows)
-- [Question 9: MODIFY - Explicit to implicit returns](#question-9-modify---explicit-to-implicit-returns)
-- [Question 10: DEBUG - Fix our mess of a function](#question-10-debug---fix-our-mess-of-a-function)
+- [Question 1: calculateArea](#question-1-calculatearea)
+- [Question 2: isEven](#question-2-iseven)
+- [Question 3: convertToFahrenheit](#question-3-converttofahrenheit)
+- [Question 4: createGreeting](#question-4-creategreeting)
+- [Question 5: getInitials](#question-5-getinitials)
+- [Question 6: formatPrice](#question-6-formatprice)
+- [Question 7: getLarger](#question-7-getlarger)
+- [Question 8: isValidAge](#question-8-isvalidage)
+- [Question 9: MODIFY - Convert declarations to arrows](#question-9-modify---convert-declarations-to-arrows)
+- [Question 10: MODIFY - Explicit to implicit returns](#question-10-modify---explicit-to-implicit-returns)
+- [Question 11: DEBUG - Fix our mess of a function](#question-11-debug---fix-our-mess-of-a-function)
 
 Alright, for tonight's assignment we have all three coding types ("from scratch", "modify", and "debug") but *no* short answers. Get started with `npm i` to install all dependencies and be sure to run your tests frequently.
 
@@ -37,106 +38,107 @@ This time we were even nicer, and imported all the `from-scratch` functions for 
 
 ------------------
 
-## Question 1: Advanced Greet
-Write a function `advancedGreet` that takes two parameters: a string `name` and a string `mood`. It should return the string:
-
-```plaintext
-"Hello [name], are you feeling [mood] today?"
-```
-
-Here's the catch, you *must* use string templates and not concatenation.
-
-## Question 2: squishRepeat
-Write a function, `squishRepeat` that takes three parameters: a string `str`, a number `index`, and a number `num`. It should return a string that is created by taking a slice of the original string *up to* the `index`, and repeated `num` times.
-
-NOTE: We will never give an index greater than the length of the string.
+## Question 1: calculateArea
+Write a function `calculateArea` that takes two parameters: a number `width` and a number `height`. It should return the area of a rectangle.
 
 ```js
-squishRepeat('hello', 1, 3)
-// 'hhh'
-squishRepeat('hello', 2, 3)
-// 'hehehe'
-squishRepeat('neato', 4, 2)
-// 'neatneat'
-squishRepeat('wow', 3, 4)
-// 'wowwowwowwow'
+calculateArea(5, 3)
+// 15
+calculateArea(10, 7)
+// 70
 ```
 
-To do this, it's *highly* recommended that you use the built in [string method .repeat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat). Just give the docs a quick read, and you'll be set!
-
-## Question 3: capitalizeSentence
-Write a function `.capitalizeSentence()` that takes one parameter: a string `sentence`. The function should return the sentence with only the first letter modified to be capitalized.
-
-NOTE: The sentence we give you will always be a normal length, and will always have a letter as the first character.
+## Question 2: isEven
+Write a function `isEven` that takes one parameter: a number. It should return `true` if the number is even, and `false` if the number is odd.
 
 ```js
-capitalizeSentence('hello there!')
-// Hello there!
+isEven(2)
+// true
+isEven(3)
+// false
+isEven(0)
+// true
 ```
 
-
-## Question 4: copyFromTheLastChar
-Write a function `copyFromTheLastChar` that takes two parameters: a string `str` and character `letter`. The function should return a copy of the given `str` from the `letter` to the end of the `str`. If the letter appears in the string more than once, copy from the *last* one. If the given letter is the last letter of the string, simply return the letter.
-
-NOTE: the letter we give will ALWAYS appear in the given string at least once.
+## Question 3: convertToFahrenheit
+Write a function `convertToFahrenheit` that takes one parameter: a number `celsius`. It should return the temperature converted to Fahrenheit using the formula: `(celsius * 9/5) + 32`.
 
 ```js
-copyFromTheLastChar('hello', 'e')
-// ello
-copyFromTheLastChar('hello', 'l')
-// lo
-copyFromTheLastChar('zzzzzz', 'z')
-// z
+convertToFahrenheit(0)
+// 32
+convertToFahrenheit(100)
+// 212
+convertToFahrenheit(37)
+// 98.6
 ```
 
-## Question 5: replaceEveryGivenLetterWithWord
-Write a function `replaceEveryGivenLetterWithWord` that takes three parameters: a string `str`, a character `letter`, and a string `word`. Return a string where you have replaced every instance of that `letter` in the `str` with the given `word`. If the `letter` does not appear in the `str`, return the original `str`.
+## Question 4: createGreeting
+Write a function `createGreeting` that takes one parameter: a string `name`. It should return a greeting string in the format: `"Hello, [name]!"` 
 
-NOTE: the `str`, `letter`, and `word` will all be lowercase.
+(don't include the `[]` characters in the string. That is just to indicate a variable).
 
 ```js
-replaceEveryGivenLetterWithWord('hello', 'l', 'world')
-// 'heworldworldo');
-replaceEveryGivenLetterWithWord('I know you', 'k', "wow")
-// "I wownow you");
-replaceEveryGivenLetterWithWord('zoo', 'x', 'albatross')
-// 'zoo');
+createGreeting('Alice')
+// "Hello, Alice!"
+createGreeting('Bob')
+// "Hello, Bob!"
 ```
 
-## Question 6: capitalizeIndex
-Write a function `capitalizeIndex` that takes two parameters: a string `word` and a number `index`. The `word` will have no punctuation or spaces, and will be all lower case. Return the word, with the letter at the `index` capitalized.
-
-NOTE: The given `index` will only ever be in the range from 0 to str.length - 1.
+## Question 5: getInitials
+Write a function `getInitials` that takes two parameters: a string `firstName` and a string `lastName`. It should return the initials by taking the first letter of each name.
 
 ```js
-capitalizeIndex('hello', 0)
-// 'Hello'
-capitalizeIndex('hello', 1)
-// 'hEllo'
-capitalizeIndex('hello', 2)
-// 'heLlo'
-capitalizeIndex('hello', 3)
-// 'helLo'
-capitalizeIndex('hello', 4)
-// 'hellO'
+getInitials('John', 'Doe')
+// "JD"
+getInitials('Mary', 'Jane')
+// "MJ"
 ```
 
-## Question 7: hasOnlyOneOfThisLetter
-Write a function `hasOnlyOneOfThisLetter` that takes two parameters: a string `str` and a character `letter`. Return the boolean `true` if the given letter appears only once, and false if it appears more than once.
+## Question 6: formatPrice
+Write a function `formatPrice` that takes one parameter: an integer `price`. It should return a formatted price string in the format: `"$[price].00"` (without the `[]`).
 
-NOTE: We will always give a letter that appears *at least* once in the string.
+```js
+formatPrice(5)
+// "$5.00"
+formatPrice(10)
+// "$10.00"
+```
 
-## Question 8: MODIFY - Convert declarations to arrows
+## Question 7: getLarger
+Write a function `getLarger` that takes two parameters: a number `num1` and a number `num2`. It should return the larger of the two numbers.
+
+```js
+getLarger(5, 3)
+// 5
+getLarger(3, 5)
+// 5
+getLarger(10, 10)
+// 10
+```
+
+## Question 8: isValidAge
+Write a function `isValidAge` that takes one parameter: a number `age`. It should return `true` if the age is between 0 and 120 (inclusive), and `false` otherwise.
+
+```js
+isValidAge(25)
+// true
+isValidAge(0)
+// true
+isValidAge(120)
+// true
+isValidAge(-1)
+// false
+isValidAge(121)
+// false
+```
+
+## Question 9: MODIFY - Convert declarations to arrows
 Inside `declarations-to-arrow.js` we have a few function declarations (and one *old school* function expression). Convert each of the functions to arrow function expressions, *while* maintaining exactly the same functionality. 
 
-> ⚠️ Note: To pass the tests, you will also need to update the names of the functions. Take a look at `tests/modify-spec.js` where we define our tests and find in the code where we import the functions from `declarations-to-arrow.js`. That will give you a hint for what we want the function names to be. 
-
-## Question 9: MODIFY - Explicit to implicit returns
+## Question 10: MODIFY - Explicit to implicit returns
 Now in `explicit-to-implicit.js`, we have those same functions simplified so they *only* return things. Let's convert them to arrow functions again *and* make them have implicit returns.
 
-> ⚠️ Note: To pass the tests, you will also need to update the names of the functions. Take a look at `tests/modify-spec.js` where we define our tests and find in the code where we import the functions from `explicit-to-implicit.js`. That will give you a hint for what we want the function names to be. 
-
-## Question 10: DEBUG - Fix our mess of a function
+## Question 11: DEBUG - Fix our mess of a function
 Inside `bad-hoist.js` we have a doozy of a function. It's declaring variables with var, using implicit globals, has sloppy concatenation, and trying (poorly) to hoist variables into a message. Ugh.
 
 Right now it logs:
