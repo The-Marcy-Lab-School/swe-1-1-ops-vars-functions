@@ -16,10 +16,11 @@ const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 describe(testSuiteName, () => {
   it('The explicit returns have been converted to implicit returns', () => {
     const fileText = fs.readFileSync(path.join(__dirname, '../src/explicit-to-implicit.js'), 'utf-8');
+    const noCommentsText = fileText.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '');
 
-    expect(fileText.includes('=>')).toBeTruthy();
-    expect(fileText.includes('return')).toBeFalsy();
-    expect(fileText.includes('function')).toBeFalsy();
+    expect(noCommentsText.includes('=>')).toBeTruthy();
+    expect(noCommentsText.includes('return')).toBeFalsy();
+    expect(noCommentsText.includes('function')).toBeFalsy();
 
     // Expect the functions to still work
     expect(add(1, 2)).toBe(3);
