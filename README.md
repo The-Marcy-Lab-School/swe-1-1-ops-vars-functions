@@ -16,7 +16,7 @@
 - [Question 10: MODIFY - Explicit to implicit returns](#question-10-modify---explicit-to-implicit-returns)
 - [Question 11: DEBUG - Fix our mess of a function](#question-11-debug---fix-our-mess-of-a-function)
 
-Alright, for tonight's assignment we have all three coding types ("from scratch", "modify", and "debug") but *no* short answers. Get started with `npm i` to install all dependencies and be sure to run your tests frequently.
+Alright, for tonight's assignment we have all three coding types ("from scratch", "modify", and "debug"). Get started with `npm i` to install all dependencies and be sure to run your tests frequently.
 
 If you're ever confused about what a function should do, **check the test files!**
 
