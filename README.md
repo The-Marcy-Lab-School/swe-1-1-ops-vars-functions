@@ -87,7 +87,6 @@ node playground.js     # run the playground file once
 nodemon playground.js  # automatically run the file when files change
 ```
 
-
 ## From Scratch Questions
 
 Okay, now let's get started!
