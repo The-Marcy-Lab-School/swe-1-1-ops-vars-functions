@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 const path = require('path');
 const fs = require('fs');
-const ScoreCounter = require('score-tests');
 const {
   add,
   subtract,
@@ -10,8 +9,6 @@ const {
 } = require('../src/explicit-to-implicit');
 
 const testSuiteName = 'Explicit to Implicit Tests';
-const scoresDir = path.join(__dirname, '..', 'scores');
-const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 
 describe(testSuiteName, () => {
   it('The explicit returns have been converted to implicit returns', () => {
@@ -27,10 +24,5 @@ describe(testSuiteName, () => {
     expect(subtract(1, 2)).toBe(-1);
     expect(multiply(1, 2)).toBe(2);
     expect(power(1, 2)).toBe(1);
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
-
-  // IGNORE PLEASE
-  beforeEach(() => scoreCounter.add(expect));
-  afterAll(scoreCounter.export);
 });

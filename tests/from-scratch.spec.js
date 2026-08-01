@@ -1,5 +1,3 @@
-const path = require('path');
-const ScoreCounter = require('score-tests'); // eslint-disable-line import/no-extraneous-dependencies
 const {
   calculateArea,
   isEven,
@@ -12,8 +10,6 @@ const {
 } = require('../src/from-scratch');
 
 const testSuiteName = 'From Scratch Tests';
-const scoresDir = path.join(__dirname, '..', 'scores');
-const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 
 describe(testSuiteName, () => {
   it('calculateArea - calculates rectangle area correctly', () => {
@@ -21,8 +17,6 @@ describe(testSuiteName, () => {
     expect(calculateArea(10, 7)).toBe(70);
     expect(calculateArea(2, 8)).toBe(16);
     expect(calculateArea(0, 5)).toBe(0);
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('isEven - returns true for even numbers, false for odd', () => {
@@ -35,8 +29,6 @@ describe(testSuiteName, () => {
     expect(isEven(5)).toBe(false);
     expect(isEven(-2)).toBe(true);
     expect(isEven(-1)).toBe(false);
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('convertToFahrenheit - converts celsius to fahrenheit correctly', () => {
@@ -45,8 +37,6 @@ describe(testSuiteName, () => {
     expect(convertToFahrenheit(37)).toBeCloseTo(98.6, 1);
     expect(convertToFahrenheit(-40)).toBe(-40);
     expect(convertToFahrenheit(25)).toBe(77);
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('createGreeting - creates proper greeting with name', () => {
@@ -54,8 +44,6 @@ describe(testSuiteName, () => {
     expect(createGreeting('Bob')).toBe('Hello, Bob!');
     expect(createGreeting('')).toBe('Hello, !');
     expect(createGreeting('John Doe')).toBe('Hello, John Doe!');
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('getInitials - extracts initials from first and last name', () => {
@@ -63,8 +51,6 @@ describe(testSuiteName, () => {
     expect(getInitials('Mary', 'Jane')).toBe('MJ');
     expect(getInitials('A', 'B')).toBe('AB');
     expect(getInitials('Xavier', 'Yamamoto')).toBe('XY');
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('formatPrice - formats number as price string', () => {
@@ -73,8 +59,6 @@ describe(testSuiteName, () => {
     expect(formatPrice(0)).toBe('$0.00');
     expect(formatPrice(25)).toBe('$25.00');
     expect(formatPrice(100)).toBe('$100.00');
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('getLarger - returns the larger of two numbers', () => {
@@ -84,8 +68,6 @@ describe(testSuiteName, () => {
     expect(getLarger(-5, -3)).toBe(-3);
     expect(getLarger(0, 1)).toBe(1);
     expect(getLarger(1, 0)).toBe(1);
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('isValidAge - returns true for valid ages, false for invalid', () => {
@@ -97,11 +79,5 @@ describe(testSuiteName, () => {
     expect(isValidAge(121)).toBe(false);
     expect(isValidAge(150)).toBe(false);
     expect(isValidAge(25)).toBe(true);
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
-
-  // IGNORE PLEASE
-  beforeEach(() => scoreCounter.add(expect));
-  afterAll(scoreCounter.export);
 });

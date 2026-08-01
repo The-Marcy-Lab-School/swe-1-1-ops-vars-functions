@@ -1,11 +1,7 @@
 /* eslint-disable no-undef */
-const path = require('path');
-const ScoreCounter = require('score-tests'); // eslint-disable-line import/no-extraneous-dependencies
 const { debugFunc } = require('../src/bad-hoist');
 
 const testSuiteName = 'Debug Tests';
-const scoresDir = path.join(__dirname, '..', 'scores');
-const scoreCounter = new ScoreCounter(testSuiteName, scoresDir);
 
 // mock console.log with jest mock function
 const log = jest.spyOn(console, 'log').mockImplementation(() => { });
@@ -26,8 +22,6 @@ describe(testSuiteName, () => {
     expect(time).toBeUndefined();
     expect(theirName).toBeUndefined();
     expect(mood).toBeUndefined();
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('uses let and const, but not var', () => {
@@ -46,8 +40,6 @@ describe(testSuiteName, () => {
     // don't just log out the exact strings
     expect(textContent.includes('Hello Zo, are you feeling happy today?')).toBeFalsy();
     expect(textContent.includes("Oh no, I'm sorry you're feeling sad today.")).toBeFalsy();
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('Uses a template literal', () => {
@@ -56,8 +48,6 @@ describe(testSuiteName, () => {
     expect(textContent.includes('`')).toBeTruthy();
     expect(textContent.includes('${')).toBeTruthy();
     expect(textContent.match(/\+^\+/)).toBeFalsy();
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
 
   it('logs the correct output', () => {
@@ -65,11 +55,5 @@ describe(testSuiteName, () => {
     expect(log).toHaveBeenCalledTimes(2);
     expect(log).toHaveBeenNthCalledWith(1, 'Hello Zo, are you feeling happy today?');
     expect(log).toHaveBeenNthCalledWith(2, "Oh no, I'm sorry you're feeling sad today.");
-
-    scoreCounter.correct(expect); // DO NOT TOUCH
   });
-
-  // IGNORE PLEASE
-  beforeEach(() => scoreCounter.add(expect));
-  afterAll(scoreCounter.export);
 });

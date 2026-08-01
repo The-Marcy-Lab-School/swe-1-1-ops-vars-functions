@@ -1,6 +1,7 @@
 // Basic Variable & Expression Functions
 const calculateArea = (width, height) => {
   // TODO: Calculate and return the area of a rectangle
+
 };
 
 const isEven = (number) => {
