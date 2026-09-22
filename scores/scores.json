@@ -1,0 +1,65 @@
+{
+  "testScores": {
+    "Debug Tests": {
+      "DeTe1": 0,
+      "DeTe2": 0,
+      "DeTe3": 0,
+      "DeTe4": 0
+    },
+    "Default Args Tests": {
+      "DeArTe1": 0
+    },
+    "From Scratch Tests": {
+      "FrScTe1": 0,
+      "FrScTe2": 0,
+      "FrScTe3": 0,
+      "FrScTe4": 0,
+      "FrScTe5": 0,
+      "FrScTe6": 0,
+      "FrScTe7": 0,
+      "FrScTe8": 0
+    },
+    "Return vs Print Tests": {
+      "ReVsPrTe1": 0
+    }
+  },
+  "idToTestNameHash": {
+    "DeTe1": "Debug Tests does not reach outside the function with global",
+    "DeTe2": "Debug Tests assigns every name before reading it",
+    "DeTe3": "Debug Tests uses an f-string instead of + concatenation",
+    "DeTe4": "Debug Tests prints the correct output",
+    "FrScTe1": "From Scratch Tests calculate_area - calculates rectangle area correctly",
+    "FrScTe2": "From Scratch Tests is_even - returns True for even numbers, False for odd",
+    "FrScTe3": "From Scratch Tests convert_to_fahrenheit - converts celsius to fahrenheit correctly",
+    "FrScTe4": "From Scratch Tests create_greeting - creates proper greeting with name",
+    "FrScTe5": "From Scratch Tests get_initials - extracts initials from first and last name",
+    "FrScTe6": "From Scratch Tests format_price - formats number as price string",
+    "FrScTe7": "From Scratch Tests get_larger - returns the larger of two numbers",
+    "FrScTe8": "From Scratch Tests is_valid_age - returns True for valid ages, False for invalid",
+    "DeArTe1": "Default Args Tests greet - works with one argument, and lets any of them be overridden",
+    "ReVsPrTe1": "Return vs Print Tests each function returns its result as well as printing it"
+  },
+  "testNameToIdHash": {
+    "Debug Tests does not reach outside the function with global": "DeTe1",
+    "Debug Tests assigns every name before reading it": "DeTe2",
+    "Debug Tests uses an f-string instead of + concatenation": "DeTe3",
+    "Debug Tests prints the correct output": "DeTe4",
+    "From Scratch Tests calculate_area - calculates rectangle area correctly": "FrScTe1",
+    "From Scratch Tests is_even - returns True for even numbers, False for odd": "FrScTe2",
+    "From Scratch Tests convert_to_fahrenheit - converts celsius to fahrenheit correctly": "FrScTe3",
+    "From Scratch Tests create_greeting - creates proper greeting with name": "FrScTe4",
+    "From Scratch Tests get_initials - extracts initials from first and last name": "FrScTe5",
+    "From Scratch Tests format_price - formats number as price string": "FrScTe6",
+    "From Scratch Tests get_larger - returns the larger of two numbers": "FrScTe7",
+    "From Scratch Tests is_valid_age - returns True for valid ages, False for invalid": "FrScTe8",
+    "Default Args Tests greet - works with one argument, and lets any of them be overridden": "DeArTe1",
+    "Return vs Print Tests each function returns its result as well as printing it": "ReVsPrTe1"
+  },
+  "humanReadable": {
+    "Debug Tests": "0/4",
+    "Default Args Tests": "0/1",
+    "From Scratch Tests": "0/8",
+    "Return vs Print Tests": "0/1",
+    "finalTestScore": "FINAL SCORE: 0/14"
+  }
+}

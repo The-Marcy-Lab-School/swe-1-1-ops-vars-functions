@@ -1,220 +1,230 @@
-# Data Types, Operators, Variables, & Functions
+# Operators, Variables, and Functions
 
-- [Before We Begin](#before-we-begin)
-  - [What's In An Assignment?](#whats-in-an-assignment)
-  - [Asking ChatGPT for Help](#asking-chatgpt-for-help)
-  - [Be Okay With Being "Provisionally Complete"](#be-okay-with-being-provisionally-complete)
-- [Set Up](#set-up)
-  - [Manual Testing in playground.js](#manual-testing-in-playgroundjs)
-- [From Scratch Questions](#from-scratch-questions)
-  - [Question 1: calculateArea](#question-1-calculatearea)
-  - [Question 2: isEven](#question-2-iseven)
-  - [Question 3: convertToFahrenheit](#question-3-converttofahrenheit)
-  - [Question 4: createGreeting](#question-4-creategreeting)
-  - [Question 5: getInitials](#question-5-getinitials)
-  - [Question 6: formatPrice](#question-6-formatprice)
-  - [Question 7: getLarger](#question-7-getlarger)
-  - [Question 8: isValidAge](#question-8-isvalidage)
-- [Modify Questions](#modify-questions)
-  - [Question 9: Convert declarations to arrows](#question-9-convert-declarations-to-arrows)
-  - [Question 10: Explicit to implicit returns](#question-10-explicit-to-implicit-returns)
-- [Debug Questions](#debug-questions)
-  - [Question 11: Fix our mess of a function](#question-11-fix-our-mess-of-a-function)
+Write small functions using Python's operators, variables, and f-strings.
 
+**Practicing:** operators, variables, functions, scope
 
-## Before We Begin
+- [AI Use on This Assignment](#ai-use-on-this-assignment)
+- [Setup](#setup)
+- [From Scratch](#from-scratch)
+  - [Question 1: `calculate_area`](#question-1-calculate_area)
+  - [Question 2: `is_even`](#question-2-is_even)
+  - [Question 3: `convert_to_fahrenheit`](#question-3-convert_to_fahrenheit)
+  - [Question 4: `create_greeting`](#question-4-create_greeting)
+  - [Question 5: `get_initials`](#question-5-get_initials)
+  - [Question 6: `format_price`](#question-6-format_price)
+  - [Question 7: `get_larger`](#question-7-get_larger)
+  - [Question 8: `is_valid_age`](#question-8-is_valid_age)
+- [Modify](#modify)
+  - [Question 9: `return` vs `print`](#question-9-return-vs-print)
+  - [Question 10: `greet`](#question-10-greet)
+- [Debug](#debug)
+  - [Question 11: `debug_func`](#question-11-debug_func)
+- [Submitting](#submitting)
 
-Welcome to your first JavaScript assignment! Before starting, we're going to go over a few important things about assignments at Marcy.
+## AI Use on This Assignment
 
-### What's In An Assignment?
+Use whichever mode matches where you are with this material. Both are fine,
+and most people move between them as a concept clicks.
 
-In your assignments, we have three coding types ("from scratch", "modify", and "debug").
+**Tutor mode.** The AI explains, questions, quizzes, and critiques, and you
+write every line you submit. For this assignment that means asking it what an
+f-string does, or having it quiz you on operators until you can predict what
+your own code will do. Ask it a hundred questions — that is the whole point.
+What you do not do is ask it for the function. Paste this at the start of a
+chat and it will hold for the rest of the conversation:
 
-- **From Scratch**: This is the bulk of the assignment. It's testing your ability to look at a blank page and create something. Usually, there will be a "from-scratch.js" file, but not always!
-- **Debug**: We'll be real with you: most of this job is fixing something broken. So in this part you'll be asked to try and get something working by *mostly* relying on reading tests.
-- **Modify**: Given some existing code, can you enhance/change it? It's similar to debug in that there's existing code, but nothing is broken.
+> You are acting as a tutor. Your job is to explain what this coding question
+> is asking, clarify confusing wording, and highlight the relevant concepts I
+> need to know — but do not provide the full solution or code that directly
+> answers the question. Instead, rephrase the problem in simpler terms,
+> identify what is being tested, and suggest what steps or thought processes
+> might help. Ask me guiding questions to make sure I am thinking critically.
+> Do not write the final function, algorithm, or code implementation.
 
-This assignment has all three types of coding questions but not every assignment will. Make sure to thoroughly read the README and use your tests to confirm you've completed the assignment!
+**Implementer mode.** You write a specification first, the AI writes code from
+it, and then you verify that code line by line. For this assignment your spec
+has to give each function's inputs, its return value, and one example. If what
+comes back does more than you asked for, reject it — over-delivery is a
+defect, and catching it is part of the job.
 
-### Asking ChatGPT for Help
+You own every line either way, and you will be asked to explain it.
 
-If you’re stuck, you may use ChatGPT to clarify the assignment — but not to solve it for you. To do this, copy the meta-prompt below into ChatGPT along with the assignment question.
+## Setup
 
-> You are acting as a tutor. Your job is to explain what this coding question is asking, clarify confusing wording, and highlight the relevant concepts students need to know — but do not provide the full solution or code that directly answers the question. Instead, focus on rephrasing the problem in simpler terms, identifying what’s being tested, and suggesting what steps or thought processes might help. Ask guiding questions to ensure the student is thinking critically. Do not write the final function, algorithm, or code implementation.
-
-Be mindful of your AI usage on assignments. AI can be a great tool to help your learning but it can also be detrimental if you let it do too much of the thinking for you.
-
-### Be Okay With Being "Provisionally Complete"
-
-At Marcy, we will deem an assignment as "complete" if the solution passes at least **75%** of the automated tests. 
-
-However, we know many of you will feel the urge to hold off on submitting until your assignment feels 100% perfect. That drive for excellence is an asset!
-
-But perfectionism can also get in the way of learning — especially when we need to cover a lot in a short amount of time.
-
-That’s why we encourage you to be comfortable with being **“provisionally complete.”** This means:
-
-- Submitting your work even if it isn’t perfect yet
-- Treating submission as a checkpoint, not a finish line
-- Committing to return, revise, and improve later
-
-Learning to move forward with provisional completeness will help you make steady progress while still building the habit of continuous improvement.
-
-## Set Up
-
-For guidance on setting up and submitting this assignment, refer to the Marcy lab School Docs How-To guide for [Working with Short Response and Coding Assignments](https://marcylabschool.gitbook.io/marcy-lab-school-docs/how-tos/working-with-assignments#how-to-work-on-assignments).
-
-Here are some useful commands to remember.
+Work in `development/mod-1`. Make a draft branch before you start.
 
 ```sh
-npm i                   # install dependencies
-git checkout -b draft   # switch to the draft branch before starting
-
-npm test # run the automated tests
-npm run test:w # run the automated tests and rerun them each time you save a change
-
-git add -A              # add a changed file to the staging area
-git commit -m 'message' # create a commit with the changes
-git push                # push the new commit to the remote repo
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+git checkout -b draft
 ```
 
-### Manual Testing in playground.js
+Run `pytest` for everything, or `pytest -k is_even` for one question.
+Scores land in `scores/scores.json`.
 
-Check out the `playground.js` file. In it, we've imported all the `from-scratch` functions for you. This can be a useful place for you to test your functions by invoking them with various inputs and logging the result. To execute this file, use `node` or `nodemon`:
+75% of tests passing counts as complete. Submit at that point even if it is
+not perfect. Treat submitting as a checkpoint rather than a finish line, and
+come back to improve it.
 
-```sh
-node playground.js     # run the playground file once
-nodemon playground.js  # automatically run the file when files change
+## From Scratch
+
+Write your solutions in `src/from_scratch.py`.
+
+### Question 1: `calculate_area`
+
+Return the area of a rectangle.
+
+```python
+calculate_area(5, 3)   # 15
 ```
 
-## From Scratch Questions
+### Question 2: `is_even`
 
-Okay, now let's get started!
+Return `True` if `number` is even, `False` if odd. Negative numbers count too.
 
-### Question 1: calculateArea
-Write a function `calculateArea` that takes two parameters: a number `width` and a number `height`. It should return the area of a rectangle.
-
-```js
-calculateArea(5, 3)
-// 15
-calculateArea(10, 7)
-// 70
+```python
+is_even(4)    # True
+is_even(-1)   # False
 ```
 
-### Question 2: isEven
-Write a function `isEven` that takes one parameter: a number. It should return `true` if the number is even, and `false` if the number is odd.
+The `%` operator gives you the remainder, and a remainder of 0 is a strong
+hint about evenness.
 
-```js
-isEven(2)
-// true
-isEven(3)
-// false
-isEven(0)
-// true
+### Question 3: `convert_to_fahrenheit`
+
+Convert celsius to fahrenheit using `(celsius * 9 / 5) + 32`.
+
+```python
+convert_to_fahrenheit(100)   # 212
+convert_to_fahrenheit(-40)   # -40
 ```
 
-### Question 3: convertToFahrenheit
-Write a function `convertToFahrenheit` that takes one parameter: a number `celsius`. It should return the temperature converted to Fahrenheit using the formula: `(celsius * 9/5) + 32`.
+That `-40` is not a typo. It is the one temperature where both scales agree,
+which is a genuinely great piece of trivia.
 
-```js
-convertToFahrenheit(0)
-// 32
-convertToFahrenheit(100)
-// 212
-convertToFahrenheit(37)
-// 98.6
+### Question 4: `create_greeting`
+
+Return a greeting. An empty name still returns a valid string.
+
+```python
+create_greeting("Alice")   # "Hello, Alice!"
+create_greeting("")        # "Hello, !"
 ```
 
-### Question 4: createGreeting
-Write a function `createGreeting` that takes one parameter: a string `name`. It should return a greeting string in the format: `"Hello, [name]!"` 
+### Question 5: `get_initials`
 
-(don't include the `[]` characters in the string. That is just to indicate a variable).
+Return the first letter of each name, joined together.
 
-```js
-createGreeting('Alice')
-// "Hello, Alice!"
-createGreeting('Bob')
-// "Hello, Bob!"
+```python
+get_initials("John", "Doe")   # "JD"
 ```
 
-### Question 5: getInitials
-Write a function `getInitials` that takes two parameters: a string `firstName` and a string `lastName`. It should return the initials by taking the first letter of each name.
+A string can be indexed like a list. What is at index 0?
 
-```js
-getInitials('John', 'Doe')
-// "JD"
-getInitials('Mary', 'Jane')
-// "MJ"
+### Question 6: `format_price`
+
+Return the price as a string with a dollar sign and two decimal places.
+
+```python
+format_price(5)   # "$5.00"
+format_price(0)   # "$0.00"
 ```
 
-### Question 6: formatPrice
-Write a function `formatPrice` that takes one parameter: an integer `price`. It should return a formatted price string in the format: `"$[price].00"` (without the `[]`).
+You could build this by hand, but do not. An f-string can round to two places
+on its own with a format spec. Look up `:.2f` and enjoy how short the answer
+gets.
 
-```js
-formatPrice(5)
-// "$5.00"
-formatPrice(10)
-// "$10.00"
+### Question 7: `get_larger`
+
+Return the larger of two numbers. Equal numbers return that number.
+
+```python
+get_larger(5, 3)     # 5
+get_larger(-5, -3)   # -3
 ```
 
-### Question 7: getLarger
-Write a function `getLarger` that takes two parameters: a number `num1` and a number `num2`. It should return the larger of the two numbers.
+### Question 8: `is_valid_age`
 
-```js
-getLarger(5, 3)
-// 5
-getLarger(3, 5)
-// 5
-getLarger(10, 10)
-// 10
+Return `True` if `age` is from 0 to 120, and `False` otherwise. Both ends
+count as valid.
+
+```python
+is_valid_age(120)   # True
+is_valid_age(121)   # False
 ```
 
-### Question 8: isValidAge
-Write a function `isValidAge` that takes one parameter: a number `age`. It should return `true` if the age is between 0 and 120 (inclusive), and `false` otherwise.
+Python lets you chain comparisons, so you can write this the way you would say
+it out loud. How about that?
 
-```js
-isValidAge(25)
-// true
-isValidAge(0)
-// true
-isValidAge(120)
-// true
-isValidAge(-1)
-// false
-isValidAge(121)
-// false
+## Modify
+
+### Question 9: `return` vs `print`
+
+The four functions in `src/return_vs_print.py` print their answer but never
+give it back. `add(2, 3)` prints the right message and evaluates to `None`, so
+`add(add(1, 2), 3)` falls apart.
+
+Make each one return its result. Keep the printed messages exactly as they
+are.
+
+```python
+add(2, 3)             # prints "The sum of 2 and 3 is 5", returns 5
+add(add(1, 2), 3)     # 6
 ```
 
-## Modify Questions
+Printing shows a human something. Returning gives the value back to your code.
+A function that only prints is a dead end, and this trips up almost everyone
+once.
 
-### Question 9: Convert declarations to arrows
-Inside `declarations-to-arrow.js` we have a few function declarations (and one *old school* function expression). Convert each of the functions to arrow function expressions, *while* maintaining exactly the same functionality. 
+### Question 10: `greet`
 
-### Question 10: Explicit to implicit returns
-Now in `explicit-to-implicit.js`, we have those same functions simplified so they *only* return things. Let's convert them to arrow functions again *and* make them have implicit returns.
+`src/default_args.py` has a `greet` that demands all three arguments. Give
+`greeting` and `punctuation` default values so only `name` is required.
 
-## Debug Questions
-
-### Question 11: Fix our mess of a function
-Inside `bad-hoist.js` we have a doozy of a function. It's declaring variables with var, using implicit globals, has sloppy concatenation, and trying (poorly) to hoist variables into a message. Ugh.
-
-Right now it logs:
-
-```plaintext
-Hello undefined, are you feeling undefined today?
-Oh no, I'm sorry you're feeling happy today.
+```python
+greet("Alice")                      # "Hello, Alice!"
+greet("Bob", "Hi")                  # "Hi, Bob!"
+greet("Dev", punctuation=".")       # "Hello, Dev."
+greet(greeting="Yo", name="Eve")    # "Yo, Eve!"
 ```
 
-Make it so it logs:
+Defaults must be `"Hello"` and `"!"`. Look at those last two calls — naming
+your arguments lets them arrive in any order you like.
 
-```plaintext
+## Debug
+
+### Question 11: `debug_func`
+
+`debug_func` in `src/bad_scope.py` looks reasonable and crashes immediately
+with an `UnboundLocalError`. It complains about `their_name`, even though
+`their_name` is assigned on the very next line.
+
+Python decides a name is local to the **whole** function body before running
+any of it, so reading it above its assignment fails. Where would the
+assignments need to be for that to stop happening?
+
+Fix it so it prints exactly this:
+
+```text
 Hello Zo, are you feeling happy today?
 Oh no, I'm sorry you're feeling sad today.
 ```
 
-Fix the function so:
-- `var` is not used
-- implicit globals are not used
-- `const` and `let` are used correctly
-- We use templates over concatenation
-- In the end, you will have 4 variable assignments: 3 initializations and 1 reassignment
+Four things the tests check:
+
+- Every name is assigned before it is read.
+- No `global`. The function keeps its variables to itself.
+- Use an f-string, not `+` to glue strings together.
+- `mood` changes between the two lines, so do not print finished strings.
+
+## Submitting
+
+```sh
+git add -A
+git commit -m "your message"
+git push
+```
+
+Open a pull request to your instructor for feedback.
