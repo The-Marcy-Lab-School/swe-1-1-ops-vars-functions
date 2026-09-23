@@ -21,6 +21,7 @@ Write small functions using Python's operators, variables, and f-strings.
 - [Debug](#debug)
   - [Question 11: `debug_func`](#question-11-debug_func)
 - [Submitting](#submitting)
+- [Good luck!](#good-luck)
 
 ## AI Use on This Assignment
 
@@ -162,12 +163,11 @@ it out loud. How about that?
 
 ### Question 9: `return` vs `print`
 
-The four functions in `src/return_vs_print.py` print their answer but never
-give it back. `add(2, 3)` prints the right message and evaluates to `None`, so
-`add(add(1, 2), 3)` falls apart.
+Make each function in `src/return_vs_print.py` return its result. They print
+their answer but never give it back, so `add(2, 3)` prints the right message
+and evaluates to `None`, which means `add(add(1, 2), 3)` falls apart.
 
-Make each one return its result. Keep the printed messages exactly as they
-are.
+Keep the printed messages exactly as they are.
 
 ```python
 add(2, 3)             # prints "The sum of 2 and 3 is 5", returns 5
@@ -228,3 +228,8 @@ git push
 ```
 
 Open a pull request to your instructor for feedback.
+
+## Good luck!
+
+This is the foundation everything else sits on. Take your time with it, and
+you can do this!
