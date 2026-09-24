@@ -187,8 +187,9 @@ format_price(0)
 ```
 
 You could build this by hand, but do not. An f-string can round to two places
-on its own with a format spec. Look up `:.2f` and enjoy how short the answer
-gets.
+on its own with a format spec.
+[String formatting](https://www.w3schools.com/python/python_string_formatting.asp)
+shows you what `:.2f` does. Enjoy how short the answer gets.
 
 ### Question 7: `get_larger`
 
