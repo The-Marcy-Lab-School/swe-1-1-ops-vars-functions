@@ -1,9 +1,11 @@
-# Operators, Variables, and Functions
+# Data Types, Operators, Variables, and Functions
 
 Write small functions using Python's operators, variables, and f-strings.
 
 **Practicing:** operators, variables, functions, scope
 
+- [Before We Begin](#before-we-begin)
+  - [What's In An Assignment?](#whats-in-an-assignment)
 - [AI Use on This Assignment](#ai-use-on-this-assignment)
 - [Setup](#setup)
 - [From Scratch](#from-scratch)
@@ -19,9 +21,30 @@ Write small functions using Python's operators, variables, and f-strings.
   - [Question 9: `return` vs `print`](#question-9-return-vs-print)
   - [Question 10: `greet`](#question-10-greet)
 - [Debug](#debug)
-  - [Question 11: `debug_func`](#question-11-debug_func)
+  - [Question 11: Fix our mess of a function](#question-11-fix-our-mess-of-a-function)
 - [Submitting](#submitting)
 - [Good luck!](#good-luck)
+
+## Before We Begin
+
+Welcome to your first Python assignment! Before starting, we are going to go
+over a few important things about assignments at Marcy.
+
+### What's In An Assignment?
+
+Assignments have three kinds of coding question.
+
+- **From Scratch**: the bulk of the assignment. It tests your ability to look
+  at a blank page and create something. Usually there is a `from_scratch.py`
+  file, but not always.
+- **Debug**: we'll be real with you, most of this job is fixing something
+  broken. Here you get code that does not work, and you get it working by
+  *mostly* relying on reading the tests.
+- **Modify**: given some existing code, can you change or improve it? Like
+  debug, there is existing code, but nothing is broken.
+
+This assignment has all three. Not every assignment will. Read the whole
+README and use the tests to confirm you have finished.
 
 ## AI Use on This Assignment
 
@@ -62,8 +85,12 @@ pip install -r requirements.txt
 git checkout -b draft
 ```
 
-Run `pytest` for everything, or `pytest -k is_even` for one question.
-Scores land in `scores/scores.json`.
+Run `pytest` for everything, or `pytest -k is_even` for one question. Scores
+land in `scores/scores.json`.
+
+You can also try things out by hand in `src/playground.py` and run it with
+`python3 src/playground.py`. Nothing in there is graded, so print whatever you
+like.
 
 75% of tests passing counts as complete. Submit at that point even if it is
 not perfect. Treat submitting as a checkpoint rather than a finish line, and
@@ -71,35 +98,50 @@ come back to improve it.
 
 ## From Scratch
 
-Write your solutions in `src/from_scratch.py`.
+Okay, now let's get started! Write your solutions in `src/from_scratch.py`.
 
 ### Question 1: `calculate_area`
 
-Return the area of a rectangle.
+Write a function `calculate_area` that takes two parameters: a number `width`
+and a number `height`. It should return the area of a rectangle.
 
 ```python
-calculate_area(5, 3)   # 15
+calculate_area(5, 3)
+# 15
+calculate_area(10, 7)
+# 70
 ```
 
 ### Question 2: `is_even`
 
-Return `True` if `number` is even, `False` if odd. Negative numbers count too.
+Write a function `is_even` that takes one parameter: a number. It should
+return `True` if the number is even, and `False` if the number is odd.
 
 ```python
-is_even(4)    # True
-is_even(-1)   # False
+is_even(2)
+# True
+is_even(3)
+# False
+is_even(0)
+# True
 ```
 
-The `%` operator gives you the remainder, and a remainder of 0 is a strong
-hint about evenness.
+The `%` operator gives you the remainder after division, and a remainder of 0
+is a strong hint about evenness.
 
 ### Question 3: `convert_to_fahrenheit`
 
-Convert celsius to fahrenheit using `(celsius * 9 / 5) + 32`.
+Write a function `convert_to_fahrenheit` that takes one parameter: a number
+`celsius`. It should return the temperature converted to Fahrenheit using the
+formula `(celsius * 9 / 5) + 32`.
 
 ```python
-convert_to_fahrenheit(100)   # 212
-convert_to_fahrenheit(-40)   # -40
+convert_to_fahrenheit(0)
+# 32
+convert_to_fahrenheit(100)
+# 212
+convert_to_fahrenheit(-40)
+# -40
 ```
 
 That `-40` is not a typo. It is the one temperature where both scales agree,
@@ -107,30 +149,41 @@ which is a genuinely great piece of trivia.
 
 ### Question 4: `create_greeting`
 
-Return a greeting. An empty name still returns a valid string.
+Write a function `create_greeting` that takes one parameter: a string `name`.
+It should return a greeting string in the format `"Hello, [name]!"`.
 
 ```python
-create_greeting("Alice")   # "Hello, Alice!"
-create_greeting("")        # "Hello, !"
+create_greeting("Alice")
+# "Hello, Alice!"
+create_greeting("")
+# "Hello, !"
 ```
+
+An empty name still has to produce a valid string, comma and all.
 
 ### Question 5: `get_initials`
 
-Return the first letter of each name, joined together.
+Write a function `get_initials` that takes two parameters: a string
+`first_name` and a string `last_name`. It should return the first letter of
+each, joined together.
 
 ```python
-get_initials("John", "Doe")   # "JD"
+get_initials("John", "Doe")
+# "JD"
 ```
 
 A string can be indexed like a list. What is at index 0?
 
 ### Question 6: `format_price`
 
-Return the price as a string with a dollar sign and two decimal places.
+Write a function `format_price` that takes one parameter: a number `price`. It
+should return the price as a string with a dollar sign and two decimal places.
 
 ```python
-format_price(5)   # "$5.00"
-format_price(0)   # "$0.00"
+format_price(5)
+# "$5.00"
+format_price(0)
+# "$0.00"
 ```
 
 You could build this by hand, but do not. An f-string can round to two places
@@ -139,21 +192,28 @@ gets.
 
 ### Question 7: `get_larger`
 
-Return the larger of two numbers. Equal numbers return that number.
+Write a function `get_larger` that takes two parameters: a number `num1` and a
+number `num2`. It should return the larger of the two. If they are equal,
+return that number.
 
 ```python
-get_larger(5, 3)     # 5
-get_larger(-5, -3)   # -3
+get_larger(5, 3)
+# 5
+get_larger(-5, -3)
+# -3
 ```
 
 ### Question 8: `is_valid_age`
 
-Return `True` if `age` is from 0 to 120, and `False` otherwise. Both ends
-count as valid.
+Write a function `is_valid_age` that takes one parameter: a number `age`. It
+should return `True` if the age is from 0 to 120, and `False` otherwise. Both
+0 and 120 count as valid.
 
 ```python
-is_valid_age(120)   # True
-is_valid_age(121)   # False
+is_valid_age(120)
+# True
+is_valid_age(121)
+# False
 ```
 
 Python lets you chain comparisons, so you can write this the way you would say
@@ -163,15 +223,17 @@ it out loud. How about that?
 
 ### Question 9: `return` vs `print`
 
-Make each function in `src/return_vs_print.py` return its result. They print
-their answer but never give it back, so `add(2, 3)` prints the right message
-and evaluates to `None`, which means `add(add(1, 2), 3)` falls apart.
+Make each of the four functions in `src/return_vs_print.py` return its result.
+They print their answer but never give it back, so `add(2, 3)` prints the right
+message and evaluates to `None`, which means `add(add(1, 2), 3)` falls apart.
 
 Keep the printed messages exactly as they are.
 
 ```python
-add(2, 3)             # prints "The sum of 2 and 3 is 5", returns 5
-add(add(1, 2), 3)     # 6
+add(2, 3)
+# prints "The sum of 2 and 3 is 5", returns 5
+add(add(1, 2), 3)
+# 6
 ```
 
 Printing shows a human something. Returning gives the value back to your code.
@@ -180,44 +242,60 @@ once.
 
 ### Question 10: `greet`
 
-`src/default_args.py` has a `greet` that demands all three arguments. Give
-`greeting` and `punctuation` default values so only `name` is required.
+Modify `greet` in `src/default_args.py` so that only `name` is required. It
+currently demands all three parameters.
+
+Give `greeting` a default of `"Hello"` and `punctuation` a default of `"!"`.
 
 ```python
-greet("Alice")                      # "Hello, Alice!"
-greet("Bob", "Hi")                  # "Hi, Bob!"
-greet("Dev", punctuation=".")       # "Hello, Dev."
-greet(greeting="Yo", name="Eve")    # "Yo, Eve!"
+greet("Alice")
+# "Hello, Alice!"
+greet("Bob", "Hi")
+# "Hi, Bob!"
+greet("Dev", punctuation=".")
+# "Hello, Dev."
+greet(greeting="Yo", name="Eve")
+# "Yo, Eve!"
 ```
 
-Defaults must be `"Hello"` and `"!"`. Look at those last two calls — naming
-your arguments lets them arrive in any order you like.
+Look at those last two calls — naming your arguments lets them arrive in any
+order you like.
 
 ## Debug
 
-### Question 11: `debug_func`
+### Question 11: Fix our mess of a function
 
-`debug_func` in `src/bad_scope.py` looks reasonable and crashes immediately
-with an `UnboundLocalError`. It complains about `their_name`, even though
-`their_name` is assigned on the very next line.
+Inside `src/bad_scope.py` we have a doozy of a function. It is reaching for a
+global, gluing strings together with `+`, and trying (poorly) to use variables
+before it has actually made them. Ugh.
 
-Python decides a name is local to the **whole** function body before running
-any of it, so reading it above its assignment fails. Where would the
-assignments need to be for that to stop happening?
+Right now it does not even run:
 
-Fix it so it prints exactly this:
+```text
+UnboundLocalError: cannot access local variable 'their_name'
+where it is not associated with a value
+```
+
+Make it so it prints:
 
 ```text
 Hello Zo, are you feeling happy today?
 Oh no, I'm sorry you're feeling sad today.
 ```
 
-Four things the tests check:
+Fix the function so:
 
-- Every name is assigned before it is read.
-- No `global`. The function keeps its variables to itself.
-- Use an f-string, not `+` to glue strings together.
-- `mood` changes between the two lines, so do not print finished strings.
+- `global` is not used
+- every name is assigned before it is read
+- f-strings are used instead of `+` concatenation
+- the finished sentences are not just printed as literal strings
+- in the end you will have 4 variable assignments: 3 initial ones and 1
+  reassignment
+
+That last point is the interesting one. Python decides a name belongs to the
+**whole** function before running any of it. So reading `their_name` above its
+assignment fails, even though the assignment sits right below. Where do the
+assignments need to go?
 
 ## Submitting
 
